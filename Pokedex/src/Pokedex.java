@@ -6,10 +6,8 @@ public class Pokedex implements PokedexTDA{
 	ABBTDA pokeArbol;
 
 	@Override
-	public void inicializar() {
-		
-		pokeArbol = new ABB();
-		
+	public void inicializar() {		
+		pokeArbol = new ABB();		
 	}
 
 	@Override
