@@ -12,21 +12,23 @@ public class Pokedex implements PokedexTDA{
 
 	@Override
 	public void agregar(Pokemon pokemon) {
-		// TODO Auto-generated method stub
+		
+		pokeArbol.agregar(pokemon);
 		
 	}
 
 	@Override
 	public void transferir(Pokemon pokemon) {
-		// TODO Auto-generated method stub
 		
+		pokeArbol.eliminar(pokemon);
 	}
 
 	@Override
 	public ColaPrioridadTDA<Pokemon> Recuperar(TipoPokemon tipo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		
+		return pokeArbol.recuperarCola(tipo);
+		
+	} 
 	
 	
 
