@@ -59,9 +59,9 @@ public class ABB implements ABBTDA{
 
 					try {
 						Pokemon pokeMax = raiz.cola.RecuperarMaxElemento();
-
+						raiz.cola.EliminarMaxPrioridad();
+						
 						if (!pokeMax.equals(poke)) {
-
 							aux.AgregarElemento(pokeMax, pokeMax.pc);
 						}
 
@@ -83,7 +83,7 @@ public class ABB implements ABBTDA{
 						} else {
 							ABBTDA auxHijoIzquierdo = raiz.HijoIzquierdo;
 							raiz = Menor(raiz.HijoDerecho);
-
+							raiz.HijoIzquierdo = auxHijoIzquierdo;
 						}
 
 					}

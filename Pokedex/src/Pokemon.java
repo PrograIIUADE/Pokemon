@@ -51,5 +51,35 @@ public class Pokemon {
 	public void setStamina(int stamina) {
 		this.stamina = stamina;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pokemon other = (Pokemon) obj;
+		if (ataque != other.ataque)
+			return false;
+		if (defensa != other.defensa)
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (pc != other.pc)
+			return false;
+		if (ps != other.ps)
+			return false;
+		if (stamina != other.stamina)
+			return false;
+		if (tipo != other.tipo)
+			return false;
+		return true;
+	}
 
+	
 }
