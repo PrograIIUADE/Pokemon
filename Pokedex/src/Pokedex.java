@@ -46,6 +46,7 @@ public class Pokedex implements PokedexTDA{
 			try {
 				Pokemon poke = cola.RecuperarMaxElemento();
 				lista.add(poke);
+				cola.EliminarMaxPrioridad();
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -126,18 +127,21 @@ public class Pokedex implements PokedexTDA{
 		for (TipoPokemon tipo : TipoPokemon.values()) {
 			
 			ColaPrioridadTDA<Pokemon> cola = pokeArbol.recuperarCola(tipo);
-			ColaPrioridadTDA<Pokemon> colaAuxiliar = new ColaPrioridad<Pokemon>();
+			List<Pokemon> listaAuxiliar = new ArrayList<Pokemon>();
 			while(!cola.ColaVacia()){
 				try {
 					Pokemon poke = cola.RecuperarMaxElemento();
 					lista.add(poke);
-					colaAuxiliar.AgregarElemento(poke, poke.getPc());
+					listaAuxiliar.add(poke);
+					cola.EliminarMaxPrioridad();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-			cola = colaAuxiliar;
+			for(Pokemon pokeAux : listaAuxiliar){
+				cola.AgregarElemento(pokeAux, pokeAux.getPc());
+			}
 						
 		}
 		
@@ -149,7 +153,7 @@ public class Pokedex implements PokedexTDA{
 			}
 		});
 		
-		List<Pokemon> listaPoderosos = lista.subList(0, cant-1);
+		List<Pokemon> listaPoderosos = lista.subList(0, cant);
 		ColaPrioridadTDA<Pokemon> colaPoderosos = new ColaPrioridad<Pokemon>();
 		for (Pokemon pokemon : listaPoderosos) {
 			
@@ -167,18 +171,21 @@ public class Pokedex implements PokedexTDA{
 		for (TipoPokemon tipo : TipoPokemon.values()) {
 			
 			ColaPrioridadTDA<Pokemon> cola = pokeArbol.recuperarCola(tipo);
-			ColaPrioridadTDA<Pokemon> colaAuxiliar = new ColaPrioridad<Pokemon>();
+			List<Pokemon> listaAuxiliar = new ArrayList<Pokemon>();
 			while(!cola.ColaVacia()){
 				try {
 					Pokemon poke = cola.RecuperarMaxElemento();
 					lista.add(poke);
-					colaAuxiliar.AgregarElemento(poke, poke.getPc());
+					listaAuxiliar.add(poke);
+					cola.EliminarMaxPrioridad();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-			cola = colaAuxiliar;
+			for(Pokemon pokeAux : listaAuxiliar){
+				cola.AgregarElemento(pokeAux, pokeAux.getPc());
+			}
 						
 		}
 		
@@ -190,7 +197,7 @@ public class Pokedex implements PokedexTDA{
 			}
 		});
 		
-		List<Pokemon> listaDebiles = lista.subList(0, cant-1);
+		List<Pokemon> listaDebiles = lista.subList(0, cant);
 		ColaPrioridadTDA<Pokemon> colaDebiles = new ColaPrioridad<Pokemon>();
 		for (Pokemon pokemon : listaDebiles) {
 			
